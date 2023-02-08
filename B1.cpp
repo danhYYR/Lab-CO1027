@@ -1,11 +1,11 @@
 #include <string.h>
 #include <iostream>
 using namespace std;
-// Student may implement another function as need
+// Remove double blank
 void remove_blank(char str[], char *outstr){
     int i=0;
     while(str[i]!='\000'){
-        // The next to element
+        // Get The next to element
         i++;
         char tmp=str[i];
         i--;
@@ -18,10 +18,12 @@ void remove_blank(char str[], char *outstr){
             i++;
         }
     }
+    // Add the last char of the string array (Remove the ? allocation in heap)
     *outstr='\000';
 }
 void process(char str[], char *outstr) {
     remove_blank(str,outstr);
+    // Move the  char pointer with 1 and 2 is the magic number
     memmove(outstr, outstr-1, strlen(outstr));
     memmove(outstr, outstr+2, strlen(outstr));
 }
