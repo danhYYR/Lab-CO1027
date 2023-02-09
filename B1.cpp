@@ -23,12 +23,23 @@ void remove_blank(char str[], char *outstr){
 }
 void process(char str[], char *outstr) {
     remove_blank(str,outstr);
-    // Move the  char pointer with 1 and 2 is the magic number
-    memmove(outstr, outstr-1, strlen(outstr));
-    memmove(outstr, outstr+2, strlen(outstr));
+    // Move the  char pointer 
+    // Detect first element
+   if (*outstr==' '){
+        memmove(outstr, outstr+1, strlen(outstr));
+   };
+   //get length of string
+   int l=strlen(outstr);
+    // Get the next to last element <=> l-1
+    outstr+=l-1;
+    char tmp=*outstr;
+    outstr-=l-1;
+    if (tmp==' '){
+        memmove(outstr, outstr-1, strlen(outstr));
+    } 
 }
 int main(){
-    char str[]= "  abc  def  ghi  " ;
+    char str[]= "abc  def  ghi  " ;
     char *outstr = new char[strlen(str) + 1];
     process(str, outstr);
     cout << outstr;
