@@ -39,7 +39,7 @@ void process(char str[], char *outstr) {
     } 
 }
 int main(){
-    char str[]= "abc  def  ghi  " ;
+    char str[]= "   abc  def ghi" ;
     char *outstr = new char[strlen(str) + 1];
     process(str, outstr);
     cout << outstr;
